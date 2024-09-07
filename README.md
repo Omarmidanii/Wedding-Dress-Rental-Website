@@ -36,7 +36,8 @@ To run this project locally, follow these steps:
 5. Run `php artisan key:generate`.
 6. Run `php artisan migrate`.
 7. Run `php artisan db:seed`.
-8. Run `php artisan serve`.
+8. Run `php artisan storage:link`.
+9. Run `php artisan serve`.
 
 ### Frontend Setup
 
@@ -45,3 +46,9 @@ To run this project locally, follow these steps:
 3. Run `npm run dev`.
 
 And there you go! Register your email and then get inside!
+
+Note : if the images didn't work try:
+`rm public/storage`.
+then:
+ `php artisan storage:link`.
+
