@@ -12,6 +12,7 @@ const WeddingDressCard = ({ wedding_dress }: Props) => {
     localStorage.setItem("dressId", `${wedding_dress.id}`);
     navigate("/weddingDress/info");
   };
+  console.log(wedding_dress.photo);
   return (
     <Card
       borderRadius={30}

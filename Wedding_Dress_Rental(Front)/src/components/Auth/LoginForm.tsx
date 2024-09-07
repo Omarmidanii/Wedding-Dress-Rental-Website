@@ -20,11 +20,12 @@ import {
   MdVisibility,
 } from "react-icons/md";
 import { useState } from "react";
+import useErrorStore from "../../stores/errorStore";
 
 export const LoginForm = () => {
-  const { mutate, status, isError } = useAuth("login");
+  const { mutate, status, isError , error } = useAuth("login");
   const isLoading = status === "pending";
-
+  const {message} = useErrorStore();
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = () => setShowPassword(!showPassword);
   const handleLogin = (values: User) => {
@@ -51,7 +52,9 @@ export const LoginForm = () => {
       validationSchema={validationsLogin}
     >
       <Form>
-        {isError && <Text color="red.700">Check Your Email or Password</Text>}
+      {error && <Text color="red.700">{error?.message}</Text>}
+        {isError && <Text color="red.700">{message?.email}</Text>}
+        {isError && <Text color="red.700">{message?.password}</Text>}
         <Box paddingTop={"50px"}>
           <FormControl id="email">
             <FormLabel fontFamily={"cursive"}>Email</FormLabel>
